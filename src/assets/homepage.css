@@ -1,0 +1,32 @@
+#team-dropdown {
+    margin: 20px;
+    font-size: 20px;
+    background-color: #365a3b; /* Red background */
+    color: #fff; /* White text */
+    border: 1px solid #ff5b5b; /* Red border */
+    border-radius: 4px;
+    padding: 8px;
+    font-family: 'Cursive', sans-serif; /* Christmas-themed font, you can replace with an appropriate font */
+}
+
+/* Style for dropdown options */
+#team-dropdown option {
+    background-color: #f2d4c5; /* Light red for options */
+    color: #333; /* Dark text for options */
+}
+
+button, input[type="submit"] {
+    background-color: #ff5b5b; /* Red button color */
+    color: #fff;
+    border: 1px solid #365a3b;
+    margin: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 25px;
+   
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #ff3333; /* Darker red on hover */
+   
+}
