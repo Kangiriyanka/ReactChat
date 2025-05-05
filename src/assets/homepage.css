@@ -1,32 +1,51 @@
+#username-container {
+    
+ 
+  
+    margin: 0 auto;
+    text-align:center;
+    align-items: center;
+}
+
+
 #team-dropdown {
-    margin: 20px;
-    font-size: 20px;
-    background-color: #365a3b; /* Red background */
-    color: #fff; /* White text */
-    border: 1px solid #ff5b5b; /* Red border */
-    border-radius: 4px;
-    padding: 8px;
-    font-family: 'Cursive', sans-serif; /* Christmas-themed font, you can replace with an appropriate font */
-}
-
-/* Style for dropdown options */
-#team-dropdown option {
-    background-color: #f2d4c5; /* Light red for options */
-    color: #333; /* Dark text for options */
-}
-
-button, input[type="submit"] {
-    background-color: #ff5b5b; /* Red button color */
+    
+    font-size: 1.5rem;
+    background-color: #365a3b; 
     color: #fff;
-    border: 1px solid #365a3b;
-    margin: 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 25px;
-   
+    border: 1px solid #150b0b; 
+    border-radius: 0.5rem;
+    padding: 1rem;
+
 }
+
+
+#team-dropdown option {
+    background-color: #f2d4c5; 
+    color: #333; 
+       font-size: 1.5rem;
+}
+
 
 button:hover, input[type="submit"]:hover {
-    background-color: #ff3333; /* Darker red on hover */
+    background-color: #890f0f; 
    
+}
+
+label {
+    font-size: 1.5em;
+    font-weight: bold;
+    display: block;
+
+    color: #ff5b5b;
+}
+input, button, input[type="submit"] {
+    font-size: 1.5rem;
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px ridge black;
+    border-radius: 4px;
+    box-sizing: border-box;
+    
 }

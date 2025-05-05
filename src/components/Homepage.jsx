@@ -1,13 +1,11 @@
 
 import { useState, useEffect } from 'react'
-import io from 'socket.io-client'
+import '../assets/Homepage.css'
 
-
-function Homepage() {
+function Homepage({onLogin}) {
 
     const [username, setUsername] = useState('');
     const [team, setTeam] = useState('team1');
-    const [socket, setSocket] = useState(null);
     
     
     /**
@@ -15,40 +13,38 @@ function Homepage() {
      * Create a socket connection and join the team
      * Redirect to the chat page
      */
-    function handleSubmit() {
+    function handleLogin() {
         if (username.trim() === '') {
-            alert('Please enter a valid username.');
+            alert('Please enter a username without spaces');
             return;
         }
-        // The server the client is connecting to 
-        const newSocket = io.connect('http://192.168.2.84:4000', { query: { username: username } });
-        setSocket(newSocket);
-
-        newSocket.on('connect', function () {
-            newSocket.emit('join', { username: username, team: team });
-            window.location.href = 'chat?team=' + team + '&username=' + username;
-
-        });
+        // I am a client that wants to connect to the server on localhost:3000
+      
+        onLogin(username, team);
         
     }
 
 
     return (
         <div>
+             <h1 > Christmas Chat Game </h1>
             <div id="username-container">
-            <h1 > Christmas Chat Game </h1>
-
-            <label for="username-input">Enter your username:</label>
+           
+            <div style ={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'baseline', gap: '1rem', textAlign: 'left'}}>
+            <label htmlFor="username-input">Enter your username:  </label>
             <input 
                 id="username-input" 
-                autocomplete="off" 
+                autoComplete="off" 
                 placeholder="Username" 
                 value = {username} 
                 onChange={(e) => setUsername(e.target.value)} 
             
             />
-            <div id="team-selection">
-                <label for="team-dropdown">Choose a Team:</label>
+            </div>
+            <div style ={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'baseline', gap: '1rem', textAlign: 'left'}}>
+
+           
+                <label htmlFor="team-dropdown">Choose a Team:</label>
                 <select id="team-dropdown"
                         value={team}
                         onChange={(e) => setTeam(e.target.value)}
@@ -59,8 +55,9 @@ function Homepage() {
                     <option value="team4">Team 4</option>
                     
                 </select>
+           
             </div>
-            <button onClick={handleSubmit}>Submit</button>
+            <button onClick={handleLogin}>Submit</button>
             </div>
         </div>
     )

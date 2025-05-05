@@ -1,0 +1,45 @@
+#chat-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 100%;
+   
+
+}
+#chat-submit-container {
+position: relative;
+text-align: center;
+
+}
+#message-input {
+    font-size: 1.5rem;
+}
+
+
+
+
+.team-container {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin: 0 1rem;
+    padding: 1rem;
+    opacity: 0.90;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: #365a3b; 
+    border-radius: 8px;
+    width: 100%;
+    overflow: auto;
+    box-sizing: border-box;
+    
+}
+
+.clear-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5rem;
+}
