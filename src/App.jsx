@@ -12,8 +12,8 @@ function App() {
   const [userInfo, setUserInfo] = useState(null);
   const backendURL =
     window.location.hostname === 'localhost'
-      ? 'https://localhost:3000' 
-      : `https://${window.location.hostname}:3000`; 
+      ? 'http://localhost:3000' 
+      : `http://${window.location.hostname}:3000`; 
    
 
   // The username and team will be passed back from the Homepage component
