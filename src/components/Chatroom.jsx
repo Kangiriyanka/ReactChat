@@ -34,17 +34,23 @@ function Chatroom( {socket, username, team}) {
             }));
         }
 
+        
+        // Event name, listener function
+        // When you do socket.emit from the server, it passes args to the client
+        // handleIncomingMessage receives its args from the server
 
         socket.on('public message', handleIncomingMessage);
         socket.on('private message', handleIncomingPrivateMessage);
 
-    
+        // Clean up the event listeners
         return () => {
             socket.off('public message', handleIncomingMessage);
             socket.off('private message', handleIncomingPrivateMessage);
         };
     }, [socket]);
 
+    // Send an event called public message to the server, and when the server sends back the message
+    // The useEffect will update the state of the message
     function sendPublicMessage(message) {
         const trimmedMessage = message.trim();
         if (trimmedMessage === '') {
@@ -58,6 +64,9 @@ function Chatroom( {socket, username, team}) {
         
     }
 
+
+    // Send an event called private message to the server, and when the server sends back the message
+    // The useEffect will update the state of the message
     function sendPrivateMessage(message) {
         const trimmedMessage = message.trim();
         if (trimmedMessage === '') {
@@ -67,6 +76,9 @@ function Chatroom( {socket, username, team}) {
         socket.emit('private message', { username, team, message: trimmedMessage });
         setMessage(''); 
     }
+
+
+    // Clear the messages for all teams
 
     function clearMessages() {
     
@@ -87,16 +99,20 @@ function Chatroom( {socket, username, team}) {
             
 
             <h1> Kihoku Feud</h1>
+            <button  style = {{margin: "1rem", width: "12rem"}} className="clear-button" onClick = {clearMessages}> Clear Messages  </button>
             <input id="message-input" autoComplete="off" placeholder="Type your message ..." value = {message} 
                 onChange={(e) => setMessage(e.target.value)}   /> 
+            <div style= {{display: "flex", justifyContent: "center", gap: "1rem"}}>
+             {/* Remember to pass a reference to the function and not just the function otherwise it will execute it. */}
             <button onClick={ () => sendPublicMessage(message)}> Send public message. </button>
             <button onClick={() => sendPrivateMessage(message)} > Send private message. </button>
+            </div>
 
         </div>
 
 
         <div id="chat-container">
-        <button className="clear-button" onClick = {clearMessages}> Clear  </button>
+       
            
             {Object.entries(teamMessages).map(([team]) => (
                

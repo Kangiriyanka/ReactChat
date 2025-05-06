@@ -1,4 +1,3 @@
-import { useState } from 'react';
 
 function Chatbox({team, messages}) {
 
@@ -16,7 +15,7 @@ function Chatbox({team, messages}) {
     <ul id={`messages-${team}`}>
     {messages.map((message, index) => (
         <li key={index} className="message">
-           {`${message.username}: ${message.text}`}
+           {`${index+1}) ${message.username}: ${message.text}`}
         </li>
     ))}
     </ul>
