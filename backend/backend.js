@@ -1,16 +1,27 @@
 import express from 'express'
-import { createServer } from 'node:http'
+import { readFileSync} from 'fs'
+import { createServer  } from  'https'
 import { Server } from 'socket.io'
 
 const app = express();
-const server = createServer(app);
+const key = readFileSync('./backend/localhost+3-key.pem');
+const cert = readFileSync('./backend/localhost+3.pem');
+
+
+
 // Wrap our server with the Socket.io server 
-const io = new Server(server, {
+
+var httpsServer = createServer({ key, cert }, app);
+const io = new Server(httpsServer, {
   cors: {
-    // Allow only this origin 
-    origin: "http://localhost:5173"
-  }
+    origin: ["https://localhost:5173", "https://192.168.2.188:5173"], // Allow specific origins
+    methods: ["GET", "POST"], // Allow specific HTTP methods
+    allowedHeaders: ["my-custom-header", "Content-Type", "Authorization"], // Allow specific headers
+    credentials: true, // Allow cookies and credentials
+  },
 });
+
+
 
 
 io.on('connection', (socket) => {
@@ -51,7 +62,7 @@ io.on('connection', (socket) => {
 
 
 
-
-server.listen(3000, () => {
-  console.log('server running at http://localhost:3000');
+// Passing "0.0.0.0" as the host allows the server to be accessible from any IP address
+httpsServer.listen(3000,  '0.0.0.0', () => {
+  console.log('server running at https://localhost:3000');
 });

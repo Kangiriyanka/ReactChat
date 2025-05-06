@@ -12,8 +12,7 @@ function Chatbox({team, messages}) {
     <div id={team} className="team-container">
     
     
-    <h2> {names[team]} </h2> 
-  
+    <h2 style = {{color: "white", margin: "0" }}> Team {names[team]} </h2> 
     <ul id={`messages-${team}`}>
     {messages.map((message, index) => (
         <li key={index} className="message">

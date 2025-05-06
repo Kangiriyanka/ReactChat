@@ -1,9 +1,12 @@
 
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import '../assets/Homepage.css'
 
 function Homepage({onLogin}) {
 
+
+    const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [team, setTeam] = useState('team1');
     
@@ -21,17 +24,19 @@ function Homepage({onLogin}) {
         // I am a client that wants to connect to the server on localhost:3000
       
         onLogin(username, team);
+        navigate(`/chatroom/${username}/${team}`);
         
     }
 
 
     return (
         <div>
-             <h1 > Christmas Chat Game </h1>
+             <h1 > Christmas Chat  </h1>
+          
             <div id="username-container">
-           
-            <div style ={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'baseline', gap: '1rem', textAlign: 'left'}}>
-            <label htmlFor="username-input">Enter your username:  </label>
+            <h2 style ={{color: "white"}}> Choose a username and team</h2>
+            <div className = "username-team-box">
+            <label htmlFor="username-input"> </label>
             <input 
                 id="username-input" 
                 autoComplete="off" 
@@ -40,11 +45,8 @@ function Homepage({onLogin}) {
                 onChange={(e) => setUsername(e.target.value)} 
             
             />
-            </div>
-            <div style ={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'baseline', gap: '1rem', textAlign: 'left'}}>
-
-           
-                <label htmlFor="team-dropdown">Choose a Team:</label>
+            
+            <label htmlFor="team-dropdown"></label>
                 <select id="team-dropdown"
                         value={team}
                         onChange={(e) => setTeam(e.target.value)}
@@ -55,9 +57,14 @@ function Homepage({onLogin}) {
                     <option value="team4">Team 4</option>
                     
                 </select>
+            </div>
+            <div>
+
+           
+              
            
             </div>
-            <button onClick={handleLogin}>Submit</button>
+            <button style ={{ }} onClick={handleLogin}>Submit</button>
             </div>
         </div>
     )
