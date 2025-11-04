@@ -1,3 +1,5 @@
+**
+Copy paste to Obsidian if you want to see the callouts.**
 
 > [!tip] Goal: Being patient with the documentation, cutting down the complexity even further. Not trying to get it.
 
